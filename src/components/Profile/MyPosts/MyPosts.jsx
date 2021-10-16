@@ -10,11 +10,8 @@ const MyPosts = () => {
         <button>Remove</button>
       </div>
       <div className={classes.posts}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message='check video about props' counts='20' />
+        <Post message='props ' counts='30' />
       </div>
     </div>
   );
