@@ -2,16 +2,17 @@
   display: grid;
   grid-template-columns: 2fr 10fr;
 }
-
+.dialog a {
+  color: white;
+}
 .item .active {
   color: gold;
 }
 .messages {
-  color: purple;
-}
-.message {
+  color: white;
   padding: 10px;
 }
+
 .dialogsItems {
   padding: 10px;
 }
