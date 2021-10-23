@@ -12,8 +12,8 @@ function App() {
         <Header />
         <NavBar />
         <div className='app-wrapper-content'>
-          <Route path='/Dialogs' component={Dialogs} />
-          <Route path='/Profile' component={Profile} />
+          <Route path='/Dialogs' render={() => <Dialogs />} />
+          <Route path='/Profile' render={() => <Profile />} />
         </div>
         <footer></footer>
       </div>
