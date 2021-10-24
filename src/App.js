@@ -14,16 +14,11 @@ function App(props) {
         <div className='app-wrapper-content'>
           <Route
             path='/Dialogs'
-            render={() => (
-              <Dialogs
-                DialogsData={props.DialogsData}
-                MessageData={props.MessageData}
-              />
-            )}
+            render={() => <Dialogs appState={props.appState.dialogsPage} />}
           />
           <Route
             path='/Profile'
-            render={() => <Profile PostsData={props.PostsData} />}
+            render={() => <Profile appState={props.appState.profilePage} />}
           />
         </div>
         <footer></footer>

@@ -1,7 +1,7 @@
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 const MyPosts = (props) => {
-  let PostsDataElements = props.PostsData.map((el) => (
+  let PostsDataElements = props.appState.map((el) => (
     <Post message={el.post} counts={el.like} />
   ));
   return (
