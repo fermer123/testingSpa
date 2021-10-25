@@ -18,7 +18,12 @@ function App(props) {
           />
           <Route
             path='/Profile'
-            render={() => <Profile appState={props.appState.profilePage} />}
+            render={() => (
+              <Profile
+                appState={props.appState.profilePage}
+                addNewPost={props.addNewPost}
+              />
+            )}
           />
         </div>
         <footer></footer>
