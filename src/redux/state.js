@@ -41,3 +41,8 @@ export let addNewPost = (postMessage) => {
   state.profilePage.PostsData.push(newPost);
   rerenderEntireTree(state);
 };
+
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  rerenderEntireTree(state);
+};
