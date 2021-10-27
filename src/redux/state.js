@@ -10,7 +10,7 @@ export let state = {
       { id: 5, like: 5, post: 'my first post5' },
       { id: 6, like: 6, post: 'my first post6' },
     ],
-    newPostText: 'Smolin Igor',
+    newPostText: '',
   },
   dialogsPage: {
     DialogsData: [
@@ -32,13 +32,14 @@ export let state = {
   },
 };
 
-export let addNewPost = (postMessage) => {
+export let addNewPost = () => {
   let newPost = {
     id: 6,
-    post: postMessage,
+    post: state.profilePage.newPostText,
     like: 10,
   };
   state.profilePage.PostsData.push(newPost);
+  state.profilePage.newPostText = '';
   rerenderEntireTree(state);
 };
 
