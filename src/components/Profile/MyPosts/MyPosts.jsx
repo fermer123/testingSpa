@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 const MyPosts = (props) => {
-  let PostsDataElements = props.appState.map((el) => (
+  let PostsDataElements = props.profilePage.map((el) => (
     <Post message={el.post} counts={el.like} />
   ));
 
@@ -11,13 +11,18 @@ const MyPosts = (props) => {
     let text = newPostElement.current.value;
     props.addNewPost(text);
     newPostElement.current.value = '';
+    // let postOnChange = () => {};
   };
   return (
     <div className={classes.postsBlock}>
       <h3>my post </h3>
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea
+            ref={newPostElement}
+            // onChange={postOnChange}
+            value={props.newPostElement}
+          />
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
