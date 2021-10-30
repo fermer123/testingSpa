@@ -1,5 +1,6 @@
-import { rerenderEntireTree } from '../render';
-
+let rerenderEntireTree = () => {
+  console.log('state is changed');
+};
 export let state = {
   profilePage: {
     PostsData: [
@@ -10,7 +11,7 @@ export let state = {
       { id: 5, like: 5, post: 'my first post5' },
       { id: 6, like: 6, post: 'my first post6' },
     ],
-    newPostText: '',
+    newPostText: 'как изменить',
   },
   dialogsPage: {
     DialogsData: [
@@ -32,7 +33,7 @@ export let state = {
   },
 };
 
-export let addNewPost = () => {
+export const addPost = () => {
   let newPost = {
     id: 6,
     post: state.profilePage.newPostText,
@@ -40,10 +41,14 @@ export let addNewPost = () => {
   };
   state.profilePage.PostsData.push(newPost);
   state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 };
 
-export let updateNewPostText = (newText) => {
+export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
-  rerenderEntireTree(state);
+  rerenderEntireTree();
+};
+
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
 };

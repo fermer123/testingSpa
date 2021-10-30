@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
@@ -21,7 +20,7 @@ function App(props) {
             render={() => (
               <Profile
                 profilePage={props.appState.profilePage}
-                addNewPost={props.addNewPost}
+                addPost={props.addPost}
                 updateNewPostText={props.updateNewPostText}
               />
             )}

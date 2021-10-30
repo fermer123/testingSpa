@@ -2,19 +2,19 @@ import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 const MyPosts = (props) => {
-  let PostsDataElements = props.profilePage.map((el) => (
+  let PostsDataElements = props.posts.map((el) => (
     <Post message={el.post} counts={el.like} />
   ));
 
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.addNewPost();
+    props.addPost();
   };
 
   let postOnChange = () => {
     let text = newPostElement.current.value;
-    props.updateNewPostText();
+    props.updateNewPostText(text);
   };
 
   return (
