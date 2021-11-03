@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Route } from 'react-router-dom';
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -13,7 +14,7 @@ function App(props) {
         <div className='app-wrapper-content'>
           <Route
             path='/Dialogs'
-            render={() => <Dialogs appState={props.appState.dialogsPage} />}
+            render={() => <Dialogs store={props.store} />}
           />
           <Route
             path='/Profile'

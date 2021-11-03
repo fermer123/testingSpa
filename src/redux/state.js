@@ -1,7 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSEGE = 'SEND_MESSEGE';
+const SEND_MESSEGE = 'SEND-MESSEGE';
 
 let store = {
   _state: {
@@ -48,6 +48,7 @@ let store = {
   },
 
   dispatch(action) {
+    //если тип равен посту то сделаем такие действия
     if (action.type === ADD_POST) {
       let newPost = {
         id: 6,
@@ -61,7 +62,7 @@ let store = {
       this._state.profilePage.newPostText = action.newText;
       this._callSubscriber(this._state);
     } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.newMessege; //переменная из вне
+      this._state.dialogsPage.newMessageBody = action.body; //переменная из вне
       this._callSubscriber(this._state);
     } else if (action.type === SEND_MESSEGE) {
       let body = this._state.dialogsPage.newMessageBody;
@@ -70,6 +71,7 @@ let store = {
         id: 6,
         message: body,
       });
+      this._callSubscriber(this._state);
     }
   },
 };
@@ -82,8 +84,9 @@ export const UpdateNewPostTextActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text,
 });
-export const UpdateNewMessegeBodyCreator = () => ({
+export const UpdateNewMessegeBodyCreator = (text) => ({
   type: UPDATE_NEW_MESSAGE_BODY,
+  body: text,
 });
 export const SendMessegeCreator = () => ({
   type: SEND_MESSEGE,
