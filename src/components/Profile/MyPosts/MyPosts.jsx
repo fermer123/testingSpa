@@ -5,10 +5,11 @@ import {
   AddPostActionCreator,
   UpdateNewPostTextActionCreator,
 } from '../../../redux/state';
+import Button from '@mui/material/Button';
 
 const MyPosts = (props) => {
   let PostsDataElements = props.posts.map((el) => (
-    <Post message={el.post} counts={el.like} />
+    <Post message={el.post} counts={el.like} key={el.id} />
   ));
 
   let newPostElement = React.createRef();
@@ -36,9 +37,13 @@ const MyPosts = (props) => {
           />
         </div>
         <div>
-          <button onClick={addPost}>Add post</button>
+          <Button onClick={addPost} variant='contained'>
+            Add post
+          </Button>
         </div>
-        <button>Remove</button>
+        <Button variant='contained' color='error'>
+          Remove
+        </Button>
       </div>
       <div className={classes.posts}>{PostsDataElements}</div>
     </div>

@@ -49,11 +49,10 @@ let store = {
   },
 
   dispatch(action) {
-    console.log(action);
     //если тип равен посту то сделаем такие действия
     if (action.type === ADD_POST) {
       let newPost = {
-        id: 6,
+        id: GenerateID(),
         post: this._state.profilePage.newPostText,
         like: 10,
       };
@@ -70,13 +69,15 @@ let store = {
       let body = this._state.dialogsPage.newMessageBody;
       this._state.dialogsPage.newMessageBody = '';
       this._state.dialogsPage.MessageData.push({
-        id: 6,
+        id: GenerateID(),
         message: body,
       });
       this._callSubscriber(this._state);
     }
   },
 };
+
+const GenerateID = () => Date.now();
 
 export const AddPostActionCreator = () => ({
   type: ADD_POST,
@@ -95,3 +96,5 @@ export const SendMessegeCreator = () => ({
 });
 
 export default store;
+//сss position display margin padding
+//typescript пока не учить
