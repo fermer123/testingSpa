@@ -35,6 +35,7 @@ let store = {
       ],
       newMessageBody: '',
     },
+    sideBar: {},
   },
   _callSubscriber() {
     console.log('state is changed');
@@ -48,6 +49,7 @@ let store = {
   },
 
   dispatch(action) {
+    console.log(action);
     //если тип равен посту то сделаем такие действия
     if (action.type === ADD_POST) {
       let newPost = {
