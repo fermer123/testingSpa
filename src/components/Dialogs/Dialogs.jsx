@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import Messages from '../Message/Message';
 import { UpdateNewMessegeBodyCreator } from '../../redux/state';
 import { SendMessegeCreator } from '../../redux/state';
+import Button from '@mui/material/Button';
 
 const Dialogs = (props) => {
   let state = props.store.getState().dialogsPage;
@@ -38,7 +39,9 @@ const Dialogs = (props) => {
             //срабатывает событие Onchange, внутри события делаем диспатч в бизнес, он там меняется и приходит с новым value
           ></textarea>
           <div>
-            <button onClick={onSendMessageClick}>Send</button>
+            <Button variant='contained' onClick={onSendMessageClick}>
+              Send
+            </Button>
           </div>
         </div>
       </div>
