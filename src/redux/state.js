@@ -14,7 +14,7 @@ let store = {
         { id: 5, like: 5, post: 'my first post5' },
         { id: 6, like: 6, post: 'my first post6' },
       ],
-      newPostText: 'как изменить',
+      newPostText: '',
     },
     dialogsPage: {
       DialogsData: [
