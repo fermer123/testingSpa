@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSEGE = 'SEND-MESSEGE';
+import dialogReducer from './DialogReducer';
+import profileReducer from './ProfileReducer';
+import sideBarReducer from './SideBarReducer';
 
 let store = {
   _state: {
@@ -47,53 +46,13 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-
   dispatch(action) {
-    //если тип равен посту то сделаем такие действия
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: GenerateID(),
-        post: this._state.profilePage.newPostText,
-        like: 10,
-      };
-      this._state.profilePage.PostsData.push(newPost);
-      this._state.profilePage.newPostText = '';
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.body; //переменная из вне
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSEGE) {
-      let body = this._state.dialogsPage.newMessageBody;
-      this._state.dialogsPage.newMessageBody = '';
-      this._state.dialogsPage.MessageData.push({
-        id: GenerateID(),
-        message: body,
-      });
-      this._callSubscriber(this._state);
-    }
+    this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.sideBar = sideBarReducer(this._state.sideBar, action);
+    this._callSubscriber(this._state);
   },
 };
-
-const GenerateID = () => Date.now();
-
-export const AddPostActionCreator = () => ({
-  type: ADD_POST,
-});
-
-export const UpdateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-export const UpdateNewMessegeBodyCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body: text,
-});
-export const SendMessegeCreator = () => ({
-  type: SEND_MESSEGE,
-});
 
 export default store;
 //сss position display margin padding

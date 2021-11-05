@@ -1,8 +1,10 @@
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Messages from '../Message/Message';
-import { UpdateNewMessegeBodyCreator } from '../../redux/state';
-import { SendMessegeCreator } from '../../redux/state';
+import {
+  UpdateNewMessegeBodyCreator,
+  SendMessegeCreator,
+} from '../../redux/DialogReducer';
 import Button from '@mui/material/Button';
 
 const Dialogs = (props) => {

@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import {
   AddPostActionCreator,
   UpdateNewPostTextActionCreator,
-} from '../../../redux/state';
+} from '../../../redux/ProfileReducer';
 import Button from '@mui/material/Button';
 
 const MyPosts = (props) => {
