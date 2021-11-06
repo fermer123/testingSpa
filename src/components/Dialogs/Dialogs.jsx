@@ -1,14 +1,10 @@
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Messages from '../Message/Message';
-import {
-  UpdateNewMessegeBodyCreator,
-  SendMessegeCreator,
-} from '../../redux/DialogReducer';
 import Button from '@mui/material/Button';
 
 const Dialogs = (props) => {
-  let state = props.store.getState().dialogsPage;
+  let state = props.dialogsPage;
 
   let newMessageBody = state.newMessageBody;
 
@@ -20,12 +16,12 @@ const Dialogs = (props) => {
   ));
 
   let onSendMessageClick = () => {
-    props.store.dispatch(SendMessegeCreator());
+    props.SendMessege();
   }; // на клик отправки сообщения
 
   let onNewMessageChange = (e) => {
     let text = e.target.value;
-    props.store.dispatch(UpdateNewMessegeBodyCreator(text));
+    props.UpdateNewMessegeBody(text);
   };
 
   return (
