@@ -17,18 +17,26 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST: //если тип равен посту то сделаем такие действия
+    case ADD_POST: {
+      //если тип равен посту то сделаем такие действия
       let newPost = {
         id: GenerateID(),
         post: state.newPostText,
         like: 10,
       };
-      state.PostsData.push(newPost);
-      state.newPostText = '';
-      return state;
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      let stateCopy = { ...state };
+      stateCopy.PostsData = [...state.PostsData];
+      stateCopy.PostsData.push(newPost);
+      stateCopy.newPostText = '';
+      return stateCopy;
+    }
+
+    case UPDATE_NEW_POST_TEXT: {
+      let stateCopy = { ...state };
+      stateCopy.PostsData = [...state.PostsData];
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
+    }
     default:
       return state;
   }

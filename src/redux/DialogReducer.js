@@ -25,10 +25,11 @@ let initialState = {
 
 const dialogReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY:
+    case UPDATE_NEW_MESSAGE_BODY: {
       state.newMessageBody = action.body; //переменная из вне
       return state;
-    case SEND_MESSEGE:
+    }
+    case SEND_MESSEGE: {
       let body = state.newMessageBody;
       state.newMessageBody = '';
       state.MessageData.push({
@@ -36,6 +37,7 @@ const dialogReducer = (state = initialState, action) => {
         message: body,
       });
       return state;
+    }
     default:
       return state;
   }
