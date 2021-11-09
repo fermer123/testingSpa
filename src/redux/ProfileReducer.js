@@ -19,6 +19,7 @@ const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST: {
       //если тип равен посту то сделаем такие действия
+
       let newPost = {
         id: GenerateID(),
         post: state.newPostText,

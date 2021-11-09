@@ -9,10 +9,10 @@ const Dialogs = (props) => {
   let newMessageBody = state.newMessageBody;
 
   let DialogsElement = state.DialogsData.map((el) => (
-    <DialogItem name={el.name} id={el.id} />
+    <DialogItem name={el.name} id={el.id} key={el.id} />
   ));
   const MessegesElement = state.MessageData.map((el) => (
-    <Messages id={el.id} text={el.message} />
+    <Messages id={el.id} text={el.message} key={el.id} />
   ));
 
   let onSendMessageClick = () => {

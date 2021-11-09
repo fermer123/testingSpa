@@ -24,30 +24,37 @@ let initialState = {
 };
 
 const dialogReducer = (state = initialState, action) => {
+  console.log(action); // { type: , body: 'asdasd' };
+  let stateCopy = {
+    ...state,
+    MessageData: [...state.MessageData],
+  };
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_BODY: {
-      state.newMessageBody = action.body; //переменная из вне
-      return state;
+      stateCopy.newMessageBody = action.body; //переменная из вне
+      return stateCopy;
     }
     case SEND_MESSEGE: {
       let body = state.newMessageBody;
-      state.newMessageBody = '';
-      state.MessageData.push({
+      stateCopy.newMessageBody = '';
+      stateCopy.MessageData.push({
         id: GenerateID(),
         message: body,
       });
-      return state;
+      return stateCopy;
     }
     default:
       return state;
   }
 };
 export default dialogReducer;
-
+// {}
 export const UpdateNewMessegeBodyCreator = (text) => ({
   type: UPDATE_NEW_MESSAGE_BODY,
   body: text,
 });
+
+// {}
 export const SendMessegeCreator = () => ({
   type: SEND_MESSEGE,
 });
