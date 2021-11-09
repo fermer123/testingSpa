@@ -25,24 +25,22 @@ let initialState = {
 
 const dialogReducer = (state = initialState, action) => {
   console.log(action); // { type: , body: 'asdasd' };
-  let stateCopy = {
-    ...state,
-    MessageData: [...state.MessageData],
-  };
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY: {
-      stateCopy.newMessageBody = action.body; //переменная из вне
-      return stateCopy;
-    }
-    case SEND_MESSEGE: {
+    case UPDATE_NEW_MESSAGE_BODY:
+      return { ...state, newMessageBody: action.body };
+    // stateCopy.newMessageBody = action.body; //переменная из вне
+
+    case SEND_MESSEGE:
       let body = state.newMessageBody;
-      stateCopy.newMessageBody = '';
-      stateCopy.MessageData.push({
-        id: GenerateID(),
-        message: body,
-      });
-      return stateCopy;
-    }
+      return {
+        ...state,
+        MessageData: [
+          ...state.MessageData,
+          { id: GenerateID(), message: body },
+        ],
+        newMessageBody: '',
+      };
+
     default:
       return state;
   }
