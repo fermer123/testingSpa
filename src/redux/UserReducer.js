@@ -12,6 +12,8 @@ let initialState = {
       fullName: 'Igor',
       status: 'boss',
       location: { city: 'Chelyabinsk', country: 'Russia' },
+      photoUrl:
+        'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
     },
     {
       id: 2,
@@ -19,6 +21,8 @@ let initialState = {
       fullName: 'Dima',
       status: 'Pre intermediate boss',
       location: { city: 'Chertanovo', country: 'San Francisco' },
+      photoUrl:
+        'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
     },
     {
       id: 3,
@@ -26,9 +30,10 @@ let initialState = {
       fullName: 'nobody',
       status: 'sos',
       location: { city: 'miasskoe', country: 'England' },
+      photoUrl:
+        'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
     },
   ],
-  newPostText: '',
 };
 
 let UserReducer = (state = initialState, action) => {
@@ -54,7 +59,7 @@ let UserReducer = (state = initialState, action) => {
         }),
       };
     case SET_USERS:
-      return { state, Users: [...state, ...action.Users] };
+      return { ...state, Users: [...state, ...action.Users] }; // когда добавляю к существующим, а когда перезатираю и создаю новое
     default:
       return state;
   }
