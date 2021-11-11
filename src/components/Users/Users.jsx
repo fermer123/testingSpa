@@ -1,45 +1,31 @@
 import styles from './User.module.css';
 import Button from '@mui/material/Button';
+import * as axios from 'axios';
+import userPhoto from '../../assets/images/user.png';
 
 let Users = (props) => {
-  // if (props.Users.length === 0) {
-  //   props.setUsers([
-  //     {
-  //       id: 1,
-  //       followed: true,
-  //       fullName: 'Igor',
-  //       status: 'boss',
-  //       location: { city: 'Chelyabinsk', country: 'Russia' },
-  //       photoUrl:
-  //         'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
-  //     },
-  //     {
-  //       id: 2,
-  //       followed: true,
-  //       fullName: 'Dima',
-  //       status: 'Pre intermediate boss',
-  //       location: { city: 'Chertanovo', country: 'San Francisco' },
-  //       photoUrl:
-  //         'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
-  //     },
-  //     {
-  //       id: 3,
-  //       followed: false,
-  //       fullName: 'nobody',
-  //       status: 'sos',
-  //       location: { city: 'miasskoe', country: 'England' },
-  //       photoUrl:
-  //         'https://kubnews.ru/upload/iblock/ba2/ba2cc9fa383e672568a551fe49b46a3f.jpg',
-  //     },
-  //   ]);
-  // }
+  let getUsers = () => {
+    if (props.Users.length === 0) {
+      axios
+        .get('https://social-network.samuraijs.com/api/1.0/users')
+        .then((respons) => {
+          props.setUsers(respons.data.items);
+        });
+    }
+  };
   return (
     <div>
+      <Button variant='contained' onClick={getUsers}>
+        push
+      </Button>
       {props.Users.map((el) => (
         <div key={el.id}>
           <span>
             <div>
-              <img src={el.photoUrl} className={styles.userPhoto} />
+              <img
+                src={el.photos.small != null ? el.photos.small : userPhoto}
+                className={styles.userPhoto}
+              />
             </div>
             <div>
               {el.followed ? (
@@ -65,11 +51,11 @@ let Users = (props) => {
           </span>
           <span>
             <span>
-              <div>{el.fullName}</div>
+              <div>{el.name}</div>
               <div>{el.status}</div>
             </span>
             <span>
-              <div>{el.location.country}</div>
+              <div>{'el.location.country'}</div>
               <div>{el.location.city}</div>
             </span>
           </span>
