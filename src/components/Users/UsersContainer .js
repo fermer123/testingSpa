@@ -17,7 +17,7 @@ class UsersContainer extends React.Component {
     this.props.toggleIsFetching(true);
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pagesize}`,
       )
       .then((respons) => {
         this.props.toggleIsFetching(false);
@@ -32,7 +32,7 @@ class UsersContainer extends React.Component {
 
     axios
       .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pagesize}`,
       )
       .then((respons) => {
         this.props.toggleIsFetching(false);
@@ -45,13 +45,12 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <Users
           totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
+          pagesize={this.props.pagesize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
           Users={this.props.Users}
           follow={this.props.follow}
           UnFollow={this.props.UnFollow}
-          userPhoto={this.props.userPhoto}
         />
       </>
     );
@@ -62,7 +61,7 @@ let mapStateToProps = (state) => {
   return {
     Users: state.usersPage.Users,
     pagesize: state.usersPage.pagesize,
-    totalUsersCount: state.usersPage.debugger,
+    totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
   };

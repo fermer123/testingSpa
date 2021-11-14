@@ -9,7 +9,7 @@ const GenerateID = () => Date.now();
 
 let initialState = {
   Users: [],
-  pageSize: 5,
+  pagesize: 5,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: false,

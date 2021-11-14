@@ -4,7 +4,7 @@ import userPhoto from '../../assets/images/user.png';
 import React from 'react';
 
 let Users = (props) => {
-  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pagesize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
