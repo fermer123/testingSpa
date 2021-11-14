@@ -38,7 +38,7 @@ let Users = (props) => {
               {el.followed ? (
                 <Button
                   onClick={() => {
-                    props.unFollow(el.id);
+                    props.UnFollow(el.id);
                   }}
                   variant='contained'
                 >
