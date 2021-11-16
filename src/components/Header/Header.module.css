@@ -6,3 +6,10 @@
   width: 50px;
   height: 50px;
 }
+
+.loginBloack {
+  float: right;
+}
+.loginBloack a {
+  color: white;
+}
