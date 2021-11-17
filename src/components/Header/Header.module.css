@@ -9,6 +9,7 @@
 
 .loginBloack {
   float: right;
+  margin-right: 100px;
 }
 .loginBloack a {
   color: white;

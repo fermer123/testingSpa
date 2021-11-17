@@ -8,8 +8,8 @@ class HeaderContainer extends React.Component {
   componentDidMount() {
     axios
       .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-        WithCredentials: true,
-      })
+        withCredentials: true, //вторым параметром в гет передается обьект с настройками
+      }) // withCredentials содержит настройки запроса.Благодаря этому запрос уйдет авторизованым на сервер.
       .then((respons) => {
         if (respons.data.resultCode === 0) {
           let { id, email, login } = respons.data.data;
