@@ -42,11 +42,14 @@ let Users = (props) => {
             <div>
               {el.followed ? (
                 <Button
+                  disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
+                    props.toggleFollowingProgress(true, el.id);
                     UsersApi.getUsers2(el.id).then((respons) => {
                       if (respons.data.resultCode == 0) {
                         props.UnFollow(el.id);
                       }
+                      props.toggleFollowingProgress(false, el.id);
                     });
                   }}
                   variant='contained'
@@ -55,11 +58,15 @@ let Users = (props) => {
                 </Button>
               ) : (
                 <Button
+                  disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
-                    getUsers2(el.id).then((respons) => {
+                    props.toggleFollowingProgress(true, el.id);
+
+                    UsersApi.getUsers2(el.id).then((respons) => {
                       if (respons.data.resultCode == 0) {
                         props.follow(el.id);
                       }
+                      props.toggleFollowingProgress(false, el.id);
                     });
                   }}
                   variant='contained'
