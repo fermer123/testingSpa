@@ -8,17 +8,10 @@ const instance = axios.create({
 
 export const UsersApi = {
   getUsers(currentPage = 1, pagesize = 10) {
-    return instance.get`users?page=${currentPage}&count=${pagesize}`.then(
-      (response) => {
-        response.data;
-      },
-    );
-  },
-
-  getUsers2(id) {
-    return instance.delete(
-      //delete и get принимает только два параметра, POST принимает 3 параметра
-      `follow/${id}`,
-    );
+    return instance
+      .get(`users?page=${currentPage}&count=${pagesize}`)
+      .then((response) => {
+        return response.data;
+      });
   },
 };
