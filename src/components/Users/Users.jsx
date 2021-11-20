@@ -53,7 +53,7 @@ let Users = (props) => {
                         { withCredentials: true }, //Авторизация
                         {
                           headers: {
-                            'API-KEY': '9b3f4cf1-b449-4bcc-94e4-65bb6856dd6d',
+                            'API-KEY': 'eda5d71c-0b14-4748-b91d-1d58038a2065',
                           },
                         },
                       )
@@ -81,7 +81,7 @@ let Users = (props) => {
                         {
                           withCredentials: true,
                           headers: {
-                            'API-KEY': 'b1775b2f-c3a5-4509-8dc9-90b5629de7c3',
+                            'API-KEY': 'eda5d71c-0b14-4748-b91d-1d58038a2065',
                           },
                         },
                       )
