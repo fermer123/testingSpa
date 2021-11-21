@@ -23,4 +23,15 @@ export const UsersApi = {
       `/follow/${UserId}`,
     );
   },
+  getProfile(userId = 1) {
+    return instance.get(`profile/` + userId);
+  },
+};
+
+export const authAPI = {
+  me() {
+    return instance.get(`auth/me`);
+    //вторым параметром в гет передается обьект с настройками
+    // withCredentials содержит настройки запроса.Благодаря этому запрос уйдет авторизованым на сервер.
+  },
 };
