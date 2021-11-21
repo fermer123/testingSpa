@@ -46,23 +46,12 @@ let Users = (props) => {
                   disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
                     props.toggleFollowingProgress(true, el.id);
-                    axios
-                      .delete(
-                        //delete и get принимает только два параметра, POST принимает 3 параметра
-                        `https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
-                        { withCredentials: true }, //Авторизация
-                        {
-                          headers: {
-                            'API-KEY': 'eda5d71c-0b14-4748-b91d-1d58038a2065',
-                          },
-                        },
-                      )
-                      .then((respons) => {
-                        if (respons.data.resultCode == 0) {
-                          props.UnFollow(el.id);
-                        }
-                        props.toggleFollowingProgress(false, el.id);
-                      });
+                    UsersApi.unfollow(el.id).then((respons) => {
+                      if (respons.data.resultCode == 0) {
+                        props.UnFollow(el.id);
+                      }
+                      props.toggleFollowingProgress(false, el.id);
+                    });
                   }}
                   variant='contained'
                 >
@@ -73,24 +62,12 @@ let Users = (props) => {
                   disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
                     props.toggleFollowingProgress(true, el.id);
-
-                    axios
-                      .post(
-                        `https://social-network.samuraijs.com/api/1.0/follow/${el.id}`,
-                        {},
-                        {
-                          withCredentials: true,
-                          headers: {
-                            'API-KEY': 'eda5d71c-0b14-4748-b91d-1d58038a2065',
-                          },
-                        },
-                      )
-                      .then((respons) => {
-                        if (respons.data.resultCode == 0) {
-                          props.follow(el.id);
-                        }
-                        props.toggleFollowingProgress(false, el.id);
-                      });
+                    UsersApi.follow(el.id).then((respons) => {
+                      if (respons.data.resultCode == 0) {
+                        props.follow(el.id);
+                      }
+                      props.toggleFollowingProgress(false, el.id);
+                    });
                   }}
                   variant='contained'
                 >

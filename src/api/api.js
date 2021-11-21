@@ -14,7 +14,13 @@ export const UsersApi = {
         return response.data;
       });
   },
-  getUsers2() {
-    return;
+  follow(UserId) {
+    return instance.post(`follow/${UserId}`);
+  },
+  unfollow(UserId = 1) {
+    return instance.delete(
+      //delete и get принимает только два параметра, POST принимает 3 параметра
+      `/follow/${UserId}`,
+    );
   },
 };
