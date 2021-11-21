@@ -3,8 +3,6 @@ import Button from '@mui/material/Button';
 import userPhoto from '../../assets/images/user.png';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { UsersApi } from '../../api/api';
-import * as axios from 'axios';
 
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pagesize);
@@ -45,13 +43,7 @@ let Users = (props) => {
                 <Button
                   disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true, el.id);
-                    UsersApi.unfollow(el.id).then((respons) => {
-                      if (respons.data.resultCode == 0) {
-                        props.UnFollow(el.id);
-                      }
-                      props.toggleFollowingProgress(false, el.id);
-                    });
+                    props.unfollow(el.id);
                   }}
                   variant='contained'
                 >
@@ -61,13 +53,7 @@ let Users = (props) => {
                 <Button
                   disabled={props.followingInProgress.some((id) => id == el.id)}
                   onClick={() => {
-                    props.toggleFollowingProgress(true, el.id);
-                    UsersApi.follow(el.id).then((respons) => {
-                      if (respons.data.resultCode == 0) {
-                        props.follow(el.id);
-                      }
-                      props.toggleFollowingProgress(false, el.id);
-                    });
+                    props.follow(el.id);
                   }}
                   variant='contained'
                 >
