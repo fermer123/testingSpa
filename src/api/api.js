@@ -17,13 +17,13 @@ export const UsersApi = {
   follow(UserId) {
     return instance.post(`follow/${UserId}`);
   },
-  unfollow(UserId = 1) {
+  unfollow(UserId) {
     return instance.delete(
       //delete и get принимает только два параметра, POST принимает 3 параметра
       `/follow/${UserId}`,
     );
   },
-  getProfile(userId = 1) {
+  getProfile(userId) {
     return instance.get(`profile/` + userId);
   },
 };
